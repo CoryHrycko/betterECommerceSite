@@ -9,7 +9,7 @@
       <li v-for="item in items" :key="item.title" >{{item.title}}</li>
     </ul>
     <button v-on:click="greet">Say Greeting</button>
-    <input type="text" v-on::keyup="pressKey">
+    <input type="text" v-on:keyup="pressKey" v-on:keyup.enter="enterHit">
   </div>
 </template>
 
@@ -37,8 +37,11 @@ export default {
     greet: function(){
       alert('hey');
     },
-    pressKey: function(){
-      console.log('pressed');
+    pressKey: function(e){
+      console.log(e.target.value);
+    },
+    enterHit: function(){
+      console.log('you hit enter');
     },
 
   }
