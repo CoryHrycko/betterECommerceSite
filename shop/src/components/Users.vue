@@ -11,7 +11,10 @@
       </form>
       <ul>
           <li v-for="user in users" :key="user.name">
-              {{user.name}}: {{user.email}}
+            <input type="checkbox" v-model="user.contacted">
+            <span :class="{contacted: user.contacted}">
+            {{user.name}}: {{user.email}} <button v-on:click="deleteUser(user)">x</button>
+            </span>
           </li>
       </ul>
   </div>
@@ -44,14 +47,24 @@ export default {
   },
   methods: {
       addUser: function(e){
+          this.users.push({
+              name: this.newUser.name,
+              email: this.newUser.email,
+              contacted: false
+          });
           console.log('add');
           e.preventDefault();
+      },
+      deleteUser: function(user){
+          this.users.splice(this.users.indexOf(user), 1);
       }
   }
 }
 </script>
 <style scoped>
-
+    .contacted{
+        text-decoration: line-through;
+    }
 </style>
 
 
