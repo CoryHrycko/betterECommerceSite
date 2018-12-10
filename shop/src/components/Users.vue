@@ -58,6 +58,9 @@ export default {
       deleteUser: function(user){
           this.users.splice(this.users.indexOf(user), 1);
       }
+  },
+  created: function(){
+      this.$http.get('https://jsonplaceholder.typicode.com/users')
   }
 }
 </script>
