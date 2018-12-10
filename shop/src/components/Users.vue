@@ -27,21 +27,6 @@ export default {
     return{
         newUser: [],
         users:[
-            {
-            name:'John Doe',
-            email:'example@emaple.com',
-            contacted: false
-            },
-            {
-            name:'Steve Doe',
-            email:'example@emaple.com',
-            contacted: false
-            },
-            {
-            name:'Mary Doe',
-            email:'example@emaple.com',
-            contacted: false
-            },
         ]
     }
   },
@@ -61,6 +46,9 @@ export default {
   },
   created: function(){
       this.$http.get('https://jsonplaceholder.typicode.com/users')
+      .then(function(response){
+          this.users = response.data;
+      });
   }
 }
 </script>
